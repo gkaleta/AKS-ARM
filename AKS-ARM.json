@@ -31,9 +31,9 @@
       {
         "apiVersion": "2018-03-31",
         "dependsOn": [
-            "[concat('Microsoft.Resources/deployments/', 'WorkspaceDeployment-20190315130545')]",
+            "[concat('Microsoft.Resources/deployments/', 'WorkspaceDeployment-x')]",
             "[variables('vNetId')]",
-            "[concat('Microsoft.Resources/deployments/', 'ClusterSubnetRoleAssignmentDeployment-20190315130545')]"
+            "[concat('Microsoft.Resources/deployments/', 'ClusterSubnetRoleAssignmentDeployment-x')]"
         ],
         "type": "Microsoft.ContainerService/managedClusters",
         "location": "[variables('location')]",
@@ -173,7 +173,7 @@
     },
     {
         "type": "Microsoft.Resources/deployments",
-        "name": "ClusterSubnetRoleAssignmentDeployment-20190315130545",
+        "name": "ClusterSubnetRoleAssignmentDeployment-x",
         "apiVersion": "2017-05-10",
         "properties": {
             "mode": "Incremental",
@@ -186,7 +186,7 @@
                     {
                         "type": "Microsoft.Network/virtualNetworks/subnets/providers/roleAssignments",
                         "apiVersion": "2017-05-01",
-                        "name": "[concat(variables('vNetName'),'/default/Microsoft.Authorization/00747df0-e801-4f5d-9207-09291078b36b')]",
+                        "name": "[concat(variables('vNetName'),'/default/Microsoft.Authorization/x')]",
                         "properties": {
                             "roleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '4d97b98b-1d4f-4787-a291-c67834d212e7')]",
                             "principalId": "[parameters('securityPrincipalId')]",
